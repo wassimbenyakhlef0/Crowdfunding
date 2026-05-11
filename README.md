@@ -1,64 +1,190 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Crowdfunding Etudiants
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Projet final du module Programmation Web 2 : developpement d'un site web dynamique avec Laravel.
 
-## About Laravel
+Cette application permet de gerer une plateforme de crowdfunding pour des projets etudiants. Les porteurs peuvent creer et publier des projets, les contributeurs peuvent soutenir les projets, commenter et suivre les mises a jour.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Objectif du projet
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+L'objectif est de mettre en pratique les notions vues en Laravel :
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- architecture MVC ;
+- routes, controleurs et vues Blade ;
+- operations CRUD ;
+- migrations et relations Eloquent ;
+- formulaires avec validation cote serveur ;
+- authentification et gestion des roles ;
+- recherche, filtres et pagination.
 
-## Learning Laravel
+## Fonctionnalites principales
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Page d'accueil avec la liste des projets publies.
+- Recherche de projets par titre.
+- Filtrage des projets par categorie : films, musique, art, startup.
+- Pagination des listes de projets.
+- Creation, affichage, modification, publication et suppression des projets.
+- Ajout de contributions sur les projets publies.
+- Affichage des contributions de l'utilisateur connecte.
+- Ajout, modification et suppression des mises a jour d'un projet.
+- Ajout et suppression des commentaires.
+- Tableau de bord administrateur avec statistiques.
+- Gestion des utilisateurs et des projets cote administrateur.
+- Upload d'images pour les projets et les mises a jour.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Roles utilisateurs
 
-## Laravel Sponsors
+- **Contributeur** : consulte les projets, contribue et commente.
+- **Porteur** : cree et gere ses propres projets.
+- **Admin** : accede au tableau de bord, aux statistiques, aux utilisateurs et aux projets.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Entites et relations
 
-### Premium Partners
+- **User**
+  - possede plusieurs projets ;
+  - possede plusieurs contributions ;
+  - possede plusieurs commentaires ;
+  - possede plusieurs mises a jour.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- **Projet**
+  - appartient a un porteur (`User`) ;
+  - possede plusieurs contributions ;
+  - possede plusieurs commentaires ;
+  - possede plusieurs mises a jour.
 
-## Contributing
+- **Contribution**
+  - appartient a un utilisateur ;
+  - appartient a un projet.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Commentaire**
+  - appartient a un utilisateur ;
+  - appartient a un projet.
 
-## Code of Conduct
+- **Update**
+  - appartient a un utilisateur ;
+  - appartient a un projet.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Technologies utilisees
 
-## Security Vulnerabilities
+- Laravel 8
+- PHP 7.4 ou PHP 8
+- MySQL
+- Blade
+- Laravel Breeze
+- Tailwind CSS
+- Laravel Mix
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Installation du projet
 
-## License
+Cloner le projet, puis entrer dans le dossier du projet :
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cd CrowdfundingEtudiant
+```
+
+Installer les dependances PHP :
+
+```bash
+composer install
+```
+
+Installer les dependances JavaScript :
+
+```bash
+npm install
+```
+
+Creer le fichier d'environnement :
+
+```bash
+cp .env.example .env
+```
+
+Generer la cle de l'application :
+
+```bash
+php artisan key:generate
+```
+
+Configurer la base de donnees dans le fichier `.env` :
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Executer les migrations :
+
+```bash
+php artisan migrate
+```
+
+Creer le lien symbolique pour les images :
+
+```bash
+php artisan storage:link
+```
+
+Compiler les assets :
+
+```bash
+npm run dev
+```
+
+Lancer le serveur local :
+
+```bash
+php artisan serve
+```
+
+Le site sera disponible sur :
+
+```text
+http://127.0.0.1:8000
+```
+
+## Compte administrateur de test
+
+Un script est fourni pour creer un compte administrateur :
+
+```bash
+php create_admin.php
+```
+
+Identifiants par defaut :
+
+```text
+Email : admin@campusfund.com
+Mot de passe : admin123
+```
+
+Apres connexion, le tableau de bord administrateur est accessible ici :
+
+```text
+http://127.0.0.1:8000/admin/dashboard
+```
+
+## Routes importantes
+
+- `/` : accueil et liste des projets.
+- `/login` : connexion.
+- `/register` : inscription.
+- `/projets` : liste des projets.
+- `/projets/create` : creation d'un projet.
+- `/mes-contributions` : contributions de l'utilisateur connecte.
+- `/admin/dashboard` : tableau de bord administrateur.
+- `/admin/users` : gestion des utilisateurs.
+- `/admin/projects` : gestion des projets.
+
+## Livrable
+
+Le livrable attendu est le code source complet du projet Laravel, depose sur GitHub ou compresse en fichier `.zip`, avec ce fichier `README.md`.
+
+Chaque membre du groupe doit presenter oralement sa fonctionnalite CRUD pendant la demonstration.
+
+## Membres du groupe
+
+- A completer
